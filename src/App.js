@@ -38,8 +38,12 @@ export default class App extends React.Component {
   }
 
   resetNote = () => { 
+    this.updateCurrentNote(this.randomNote());
+  }
+
+  updateCurrentNote = (note) => {
     this.setState({
-      currentNote: this.randomNote()
+      currentNote: note
     });
   }
 
@@ -60,7 +64,7 @@ export default class App extends React.Component {
         </header>
         <FretboardDisplay string={this.state.currentNote.string} fret={this.state.currentNote.fret} note={this.state.currentNote.note} />
         <NoteButtonPanel callback={this.receiveGuess} />
-        <div>{this.state.guessState}</div>
+        <div className="guessDisplay" >{this.state.guessState}</div>
       </>
     );
   }
